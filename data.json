@@ -1,0 +1,25 @@
+[
+  {
+    "name": "samsung s10 lite",
+    "prod": "Samsung",
+    "category": "Phone",
+    "cost" : 2050,
+    "description" : "Very good phone"
+  },
+
+  {
+    "name": "Asus keyboard 2000",
+    "prod": "Asus",
+    "category": "hardware",
+    "cost" : 250,
+    "description" : "Very good keyboard"
+  },
+
+  {
+    "name": "Steelseries mouse 2500",
+    "prod": "Steelseries",
+    "category": "hardware",
+    "cost" : 350,
+    "description" : "Very good mouse"
+  }
+]
