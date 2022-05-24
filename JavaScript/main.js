@@ -4,7 +4,7 @@ const sortOptionDisplay = () => {
   let content = '<h3><h3>'
 
   optionArray.map((el) => {
-    content += `<button class="sortBtn" onclick="test(value)" value="${el}">${el}</button>`
+    content += `<button class="sortBtn" onclick="test()" value="${el}">${el}</button>`
   })
   optionBox.innerHTML = content
 }
@@ -12,6 +12,16 @@ const sortOptionDisplay = () => {
 sortOptionDisplay()
 
 
-function test(val) {
-  console.log(`It works ${val}`)
+function test() {
+  let HttpObject = new XMLHttpRequest()
+
+  HttpObject.open('GET', 'data.xml')
+  HttpObject.send()
+  HttpObject.onreadystatechange = function () {
+    if(this.readyState === 4 && this.status === 200) {
+      document.getElementById('test').innerHTML = this.responseText
+    } else if (this.readyState === 4 && this.status === 404) {
+      console.log('404')
+    }
+  }
 }
