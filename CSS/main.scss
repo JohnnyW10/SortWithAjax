@@ -1,31 +1,54 @@
 body {
   margin: 0;
   color: black;
-  background-color: rgb(73, 130, 53);
+  background-color: rgb(175, 64, 64);
   text-align: center;
 
   #sortOption {
     width: 100%;
-  }
+    height: 60px;
+    background-color: rgb(189, 187, 187);
+    display: flex;
+    padding: 5px 0;
+    margin: auto;
 
-  .sortBtn {
-    min-width: 10%;
-    margin: 0 10px;
-    height: 30px;
-    font-size: 0.9em;
-  }
+    div {
+      margin: auto;
+      
+      p {
+        margin: 0;
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 15px;
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+      }
 
-  button {
-    padding: 5px;
-    background-color: green;
-    border-radius: 15px;
-    font-size: 1.1em;
-    width: 100px;
-    cursor: pointer;
+      button {
+        width: 200px;
+        height: 50px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 15px;
+        cursor: pointer;
+      }
+      
+      .hide {
+        display: none;
+        padding: 10px;
+        margin: 0 2px;
+      }
 
-    &:hover {
-      background-color: rgb(8, 75, 8);
+      &:hover {
+        .hide {
+          display: block;
+          padding: 10px;
+          margin: 0 2px;
+        }
+      }
     }
   }
-
 }

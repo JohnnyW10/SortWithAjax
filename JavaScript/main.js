@@ -1,10 +1,43 @@
 const sortOptionDisplay = () => {
-  const optionArray = ['Producent', 'Category', 'Growing Price', 'Decreasing price', 'Show all']
-  let optionBox = document.getElementById('sortOption')
-  let content = '<h3><h3>'
+  const optionArray = [
+    {
+      name: "Producent",
+      types: ['Samsung', 'Asus', 'Iphone', 'Logitech', 'Steelseries']
+    },
 
-  optionArray.map((el) => {
-    content += `<button class="sortBtn" onclick="test()" value="${el}">${el}</button>`
+    {
+      name: 'Category',
+      types: ['Mouse', 'Keyboard', 'Phone']
+    }, 
+
+    {
+      name: 'Growing Price',
+      types: []
+    }, 
+
+    {
+      name: 'Decreasing price',
+      types: []
+    }, 
+
+    {
+      name: 'Show all',
+      types: []
+    }]
+  
+  let optionBox = document.getElementById('sortOption')
+  let content = ''
+
+  optionArray.map(el => {
+    if(el.types.length === 0) {
+      content += `<div><button onclick="test(this)">${el.name}</button></div>`
+    } else {
+      content += `<div><p>${el.name}</p>`
+      el.types.map(ele => {
+        content += `<button class="hide" onclick="test(this)">${ele}</button>`
+      })
+      content += '</div>'
+    }
   })
   optionBox.innerHTML = content
 }
@@ -12,16 +45,33 @@ const sortOptionDisplay = () => {
 sortOptionDisplay()
 
 
-function test() {
+function test(sortType) {
   let HttpObject = new XMLHttpRequest()
-
   HttpObject.open('GET', 'data.xml')
   HttpObject.send()
+  let typeSort = sortType.innerHTML
+  
+
   HttpObject.onreadystatechange = function () {
     if(this.readyState === 4 && this.status === 200) {
-      document.getElementById('test').innerHTML = this.responseText
-    } else if (this.readyState === 4 && this.status === 404) {
-      console.log('404')
+      processedXML(this, typeSort)
+    } else if (this.status === 404) {
+      console.log(`Error: ${this.status}`)
     }
   }
 }
+
+function processedXML(processed, sortType) {
+  let dataXML = processed.responseXML
+  let listOfProduct = dataXML.getElementsByTagName("product");
+  let atribiute = ['name', 'prod', 'description', 'cost']
+
+  console.log(sortType)
+  for(let i=0; i < listOfProduct.length; i++) {
+    atribiute.map(el => {
+      let x = listOfProduct[i].getElementsByTagName(el)[0].childNodes[0].nodeValue;
+      console.log(x)
+    })
+  }
+}
+

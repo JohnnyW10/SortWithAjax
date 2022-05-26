@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <items>
-  <element category="Phone">
+  <product category="Phone">
     <name>Samsung S10 Lite</name>
     <prod>Samsung</prod>
     <description>Extra cheap phone</description>
     <cost>2050</cost>
-  </element>
-  <element category="Keyboard">
+  </product>
+  <product category="Keyboard">
     <name>Asus ....</name>
     <prod>Asus</prod>
     <description>Good Keyboard ....</description>
     <cost>100</cost>
-  </element>
+  </product>
 </items>
